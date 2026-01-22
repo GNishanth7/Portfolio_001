@@ -40,7 +40,7 @@ export default function PlayPage() {
   const bumpersRef = useRef<Bumper[]>([]);
   const leftFlipperAngle = useRef(0);
   const rightFlipperAngle = useRef(0);
-  const gameLoopRef = useRef<number>();
+  const gameLoopRef = useRef<number | undefined>(undefined);
   const launched = useRef(false);
   const scaleRef = useRef(1);
 
