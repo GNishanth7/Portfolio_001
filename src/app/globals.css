@@ -1,6 +1,4 @@
-﻿@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   color-scheme: dark;
@@ -481,47 +479,208 @@ a {
   padding: 0.62rem 0.7rem;
 }
 
-.project-grid {
-  margin-top: 0.8rem;
+.projects-workspace {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
-  gap: 0.75rem;
+  gap: 0.8rem;
 }
 
-.project-card {
+.projects-headline p {
+  max-width: 70ch;
+}
+
+.projects-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.project-metric-card {
   border: 1px solid var(--border);
-  border-radius: 0.8rem;
-  padding: 0.72rem;
-  background: var(--panel-alt);
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
+  border-radius: 0.78rem;
+  padding: 0.66rem 0.72rem;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.02), var(--panel-alt));
+  display: grid;
+  gap: 0.25rem;
 }
 
-.project-card.is-focused {
+.project-metric-card p,
+.project-metric-card span {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  line-height: 1.45;
+}
+
+.project-metric-card strong {
+  font-size: 1.25rem;
+  color: var(--text-main);
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+.project-controls {
+  border: 1px solid var(--border);
+  border-radius: 0.82rem;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.01), var(--panel-alt));
+  padding: 0.72rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.projects-search {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.projects-search span {
+  font-size: 0.74rem;
+  color: var(--text-soft);
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+.projects-search input {
+  border-radius: 0.55rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-main);
+  padding: 0.5rem 0.6rem;
+  font-size: 0.84rem;
+}
+
+.track-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+}
+
+.track-chip,
+.track-reset {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-soft);
+  cursor: pointer;
+  font-family: var(--font-mono), "Courier New", monospace;
+  padding: 0.28rem 0.55rem;
+  font-size: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+}
+
+.track-chip small {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 999px;
+  padding: 0.08rem 0.32rem;
+}
+
+.track-chip.active {
+  color: var(--text-main);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.track-reset {
+  margin-left: auto;
+}
+
+.projects-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 0.72rem;
+  align-items: start;
+}
+
+.project-list-pane {
+  border: 1px solid var(--border);
+  border-radius: 0.82rem;
+  background: var(--panel-alt);
+  max-height: 660px;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.project-list-pane header {
+  padding: 0.72rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.project-list-pane h2 {
+  margin: 0;
+  font-size: 0.84rem;
+}
+
+.project-list-pane header p {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+.project-list {
+  margin: 0;
+  padding: 0.5rem;
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+  overflow-y: auto;
+}
+
+.project-list-item {
+  border: 1px solid var(--border);
+  border-radius: 0.72rem;
+  background: rgba(255, 255, 255, 0.01);
+  overflow: hidden;
+}
+
+.project-list-item.active {
   border-color: var(--accent);
   box-shadow: 0 0 0 1px var(--accent-soft) inset;
 }
 
-.project-head {
+.project-select {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: var(--text-main);
+  padding: 0.65rem;
+  cursor: pointer;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.project-title-row {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.45rem;
 }
 
-.project-head span {
-  font-size: 0.66rem;
-  color: var(--text-soft);
-  font-family: var(--font-mono), "Courier New", monospace;
-  border: 1px solid var(--border);
-  border-radius: 0.35rem;
-  padding: 0.14rem 0.32rem;
-}
-
-.project-card p {
+.project-title-row h3 {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.project-track {
+  font-size: 0.62rem;
+  color: var(--text-soft);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.08rem 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+.project-select p {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
   color: var(--text-main);
 }
 
@@ -532,29 +691,399 @@ a {
 }
 
 .chip-row span {
-  font-size: 0.66rem;
+  font-size: 0.64rem;
   color: var(--text-main);
   background: var(--accent-soft);
   border: 1px solid var(--border);
   border-radius: 999px;
-  padding: 0.16rem 0.45rem;
+  padding: 0.14rem 0.42rem;
 }
 
-.project-footer {
+.project-list-actions {
+  border-top: 1px solid var(--border);
+  padding: 0.4rem 0.65rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 0.65rem;
-  margin-top: auto;
-  font-size: 0.74rem;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 
-.project-footer span {
+.project-list-actions span {
+  font-size: 0.68rem;
   color: var(--text-soft);
 }
 
-.project-footer a {
+.project-list-actions a {
+  font-size: 0.7rem;
   color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.16rem;
+}
+
+.project-list-empty {
+  padding: 1rem;
+}
+
+.project-list-empty h2 {
+  margin: 0;
+  font-size: 0.94rem;
+}
+
+.project-list-empty p {
+  margin: 0.45rem 0 0;
+  color: var(--text-soft);
+}
+
+.project-spotlight {
+  border: 1px solid var(--border);
+  border-radius: 0.82rem;
+  background: var(--panel-alt);
+  padding: 0.82rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.spotlight-head {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.spotlight-badge {
+  width: fit-content;
+  font-size: 0.68rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.12rem 0.48rem;
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+.spotlight-head h2 {
+  margin: 0;
+  font-size: 1.18rem;
+}
+
+.spotlight-head p {
+  margin: 0;
+  line-height: 1.65;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.spotlight-grid article {
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  padding: 0.58rem 0.62rem;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.spotlight-grid h3 {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+.spotlight-grid ul {
+  margin: 0.48rem 0 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.28rem;
+}
+
+.spotlight-grid li {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.spotlight-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.spotlight-actions a {
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--accent-soft);
+  color: var(--text-main);
+  font-size: 0.74rem;
+  padding: 0.36rem 0.55rem;
+  font-family: var(--font-mono), "Courier New", monospace;
+  text-decoration: none;
+}
+
+.project-case-page {
+  display: grid;
+  place-items: center;
+}
+
+.project-case-shell {
+  width: min(1240px, 100%);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 1.05rem;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(79, 157, 255, 0.12), transparent 40%),
+    radial-gradient(circle at 90% 100%, rgba(56, 189, 248, 0.08), transparent 40%),
+    var(--bg);
+  box-shadow: 0 24px 80px rgba(2, 6, 18, 0.65);
+  padding: clamp(1rem, 2vw, 1.4rem);
+  display: grid;
+  gap: 0.9rem;
+}
+
+.project-case-header {
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 0.9rem;
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  padding: 0.95rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.project-case-title {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.project-case-kicker {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+.project-case-header h1 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.15vw, 1.95rem);
+}
+
+.project-case-header p {
+  margin: 0;
+  color: var(--text-main);
+  line-height: 1.65;
+  max-width: 72ch;
+}
+
+.project-case-meta {
+  margin-top: 0.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+}
+
+.project-case-meta span {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.16rem 0.48rem;
+  font-size: 0.68rem;
+  color: var(--text-soft);
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+.project-case-genre {
+  border: 1px solid;
+  border-radius: 999px;
+  padding: 0.22rem 0.62rem;
+  font-size: 0.72rem;
+  font-family: var(--font-mono), "Courier New", monospace;
+  white-space: nowrap;
+  background: rgba(12, 20, 34, 0.6);
+}
+
+.project-case-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 320px);
+  gap: 0.78rem;
+  align-items: start;
+}
+
+.project-case-main {
+  display: grid;
+  gap: 0.78rem;
+}
+
+.project-case-section {
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: var(--panel-alt);
+  padding: 0.88rem;
+}
+
+.project-case-section h2 {
+  margin: 0;
+  font-size: 0.86rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+.project-case-section p {
+  margin: 0.48rem 0 0;
+  color: var(--text-main);
+  line-height: 1.65;
+}
+
+.project-case-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.62rem;
+}
+
+.project-case-grid article {
+  border: 1px solid var(--border);
+  border-radius: 0.72rem;
+  background: var(--panel-alt);
+  padding: 0.76rem;
+}
+
+.project-case-grid h3 {
+  margin: 0;
+  font-size: 0.76rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+.project-case-grid ul {
+  margin: 0.45rem 0 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.project-case-grid li {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.project-related-list {
+  margin-top: 0.56rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.project-related-card {
+  border: 1px solid var(--border);
+  border-radius: 0.68rem;
+  background: rgba(255, 255, 255, 0.01);
+  padding: 0.55rem 0.6rem;
+  text-decoration: none;
+  display: grid;
+  gap: 0.34rem;
+}
+
+.project-related-card h3 {
+  margin: 0;
+  font-size: 0.83rem;
+  color: var(--text-main);
+}
+
+.project-related-card p {
+  margin: 0;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
+.project-related-card span {
+  font-size: 0.66rem;
+  color: var(--accent);
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+.project-case-sidebar {
+  position: sticky;
+  top: 0.8rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.project-side-card {
+  border: 1px solid var(--border);
+  border-radius: 0.82rem;
+  background: var(--panel-alt);
+  padding: 0.72rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.project-side-card h3 {
+  margin: 0;
+  font-size: 0.74rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+.project-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.project-tech-tags span {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  padding: 0.16rem 0.44rem;
+  font-size: 0.68rem;
+  color: var(--text-main);
+}
+
+.project-case-footer {
+  border: 1px solid var(--border);
+  border-radius: 0.82rem;
+  background: var(--panel-alt);
+  padding: 0.7rem 0.78rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.55rem;
+}
+
+.project-case-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+}
+
+.project-case-links a,
+.project-case-links span {
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.32rem 0.5rem;
+  background: var(--accent-soft);
+  color: var(--text-main);
+  font-size: 0.74rem;
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+.project-case-links a {
+  text-decoration: none;
+}
+
+.project-case-footer-note {
+  color: var(--text-soft);
+  font-size: 0.74rem;
+  font-family: var(--font-mono), "Courier New", monospace;
 }
 
 .timeline {
@@ -745,6 +1274,18 @@ a {
   .inspector-panel {
     display: none;
   }
+
+  .projects-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .spotlight-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-related-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 920px) {
@@ -762,6 +1303,30 @@ a {
 
   .status-center {
     display: none;
+  }
+
+  .projects-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .project-list-pane {
+    max-height: 420px;
+  }
+
+  .project-case-header {
+    flex-direction: column;
+  }
+
+  .project-case-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .project-case-sidebar {
+    position: static;
+  }
+
+  .project-case-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -799,6 +1364,26 @@ a {
     width: 100%;
     justify-content: flex-start;
     flex-wrap: wrap;
+  }
+
+  .projects-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .track-reset {
+    margin-left: 0;
+  }
+
+  .spotlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-case-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-related-list {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useState } from "react";
+import ProjectsWorkspace from "@/components/vscode/projects/ProjectsWorkspace";
 import { journeyStories } from "@/data/journey";
 import { profile, projects, skills } from "@/data/projects";
 
@@ -106,7 +106,7 @@ export default function PortfolioIDE() {
   const [openTabs, setOpenTabs] = useState<TabId[]>(["readme", "projects"]);
   const [activeTab, setActiveTab] = useState<TabId>("readme");
   const [searchQuery, setSearchQuery] = useState("");
-  const [focusedProjectId, setFocusedProjectId] = useState<string | null>(null);
+  const [focusedProjectId, setFocusedProjectId] = useState<string | null>(projects[0]?.id ?? null);
   const [commandInput, setCommandInput] = useState("");
   const [terminalLines, setTerminalLines] = useState<string[]>([
     "workspace boot complete. type `help` for commands.",
@@ -242,12 +242,12 @@ export default function PortfolioIDE() {
           <section className="editor-document">
             <h1>Portfolio Workspace v2.0</h1>
             <p>
-              This portfolio is structured like an IDE so recruiters can inspect my work as if they are reviewing a real
-              project repository.
+              I built this portfolio like a real engineering workspace so you can review my work the same way you would
+              review a repo.
             </p>
             <p>
-              Navigate through projects, technical journey, strengths, and execution playbook. Use explorer clicks or
-              terminal commands like <code>open projects</code> and <code>open journey</code>.
+              Start with projects, then open journey and strengths for context. You can click through Explorer or use
+              commands like <code>open projects</code> and <code>open journey</code>.
             </p>
             <div className="action-row">
               <button type="button" onClick={() => openTab("projects")}>
@@ -320,35 +320,11 @@ export default function PortfolioIDE() {
         );
       case "projects":
         return (
-          <section className="editor-document">
-            <h1>Project Case Studies</h1>
-            <p className="muted">
-              Built across hackathons, research, and production internships. Click any card for route-level detail.
-            </p>
-            <div className="project-grid">
-              {projects.map((project) => (
-                <article
-                  key={project.id}
-                  className={`project-card ${focusedProjectId === project.id ? "is-focused" : ""}`}
-                >
-                  <div className="project-head">
-                    <h3>{project.title}</h3>
-                    <span>{project.genre}</span>
-                  </div>
-                  <p>{project.description}</p>
-                  <div className="chip-row">
-                    {project.technologies.slice(0, 4).map((tech) => (
-                      <span key={tech}>{tech}</span>
-                    ))}
-                  </div>
-                  <div className="project-footer">
-                    <span>{project.outcomes[0]}</span>
-                    <Link href={`/project/${project.id}`}>Open detail view</Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
+          <ProjectsWorkspace
+            projects={projects}
+            focusedProjectId={focusedProjectId}
+            onProjectFocus={setFocusedProjectId}
+          />
         );
       case "journey":
         return (
@@ -548,7 +524,7 @@ export default function PortfolioIDE() {
                 <article>
                   <h3>Quick Snapshot</h3>
                   <p>{profile.stats.projectsCompleted}+ shipped or completed projects</p>
-                  <p>Hackathons, internship delivery, and research depth.</p>
+                  <p>Built through hackathons, research projects, and internship delivery.</p>
                 </article>
                 <article>
                   <h3>Top Capabilities</h3>
@@ -615,7 +591,7 @@ export default function PortfolioIDE() {
             <article>
               <h3>Why this portfolio</h3>
               <p>
-                Structured to reduce scanning time: clear projects, technical depth, strengths, and direct contact paths.
+                I designed this to reduce recruiter scan time: fast project browsing, deeper technical context, and clear contact paths.
               </p>
             </article>
             <article>

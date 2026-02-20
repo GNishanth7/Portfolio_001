@@ -15,13 +15,13 @@ export const journeyStories: JourneyStory[] = [
     year: "2022",
     format: "Hackathon | 36h | Team of 4",
     summary:
-      "Led a college friend-team to build a facial recognition attendance prototype. Focused on data collection and cleaning for model training.",
+      "This was my first major hackathon. I pulled together a team of friends and took ownership of data collection and cleanup for our face-attendance model.",
     highlights: [
       "Selected for finals top 15 from 200+ teams",
       "Built practical OpenCV pipeline under time pressure",
       "Learned hackathon pacing and team coordination",
     ],
-    lesson: "Speed matters, but clean data matters more.",
+    lesson: "I learned fast that clean data beats flashy modeling.",
   },
   {
     id: "psg-medicult-hackathon",
@@ -29,13 +29,13 @@ export const journeyStories: JourneyStory[] = [
     year: "2022",
     format: "Hackathon | 36h | Team of 5",
     summary:
-      "Built an ambulance booking app with smartwatch anomaly trigger logic. Learned Android XML in real time during the event and shipped a working flow.",
+      "We built an ambulance booking app linked with smartwatch anomaly detection. I had to learn Android XML live during the event and still ship.",
     highlights: [
       "Reached top 100, then top 20 from 500+ teams",
       "Integrated mobile app, Firebase, and Python heartbeat checks",
       "Delivered under sleepless two-night sprint conditions",
     ],
-    lesson: "Learning on demand is a competitive advantage.",
+    lesson: "When time is tight, learning on demand becomes a superpower.",
   },
   {
     id: "nutrition-mini-project",
@@ -43,13 +43,13 @@ export const journeyStories: JourneyStory[] = [
     year: "2023",
     format: "Academic Project | Team of 4",
     summary:
-      "Designed a content-based diet recommendation model and took ownership of delivery. Added Docker packaging and Streamlit UI to make reproducible usage easier.",
+      "I built a diet recommendation model and pushed hard to make it usable, not just correct. Docker and Streamlit helped us run it consistently.",
     highlights: [
       "Used nearest-neighbor style recommendation pipeline",
       "Containerized workflow for portable execution",
       "Balanced leadership and deep implementation work",
     ],
-    lesson: "Reproducibility is part of product quality.",
+    lesson: "If people cannot run it, it is not finished.",
   },
   {
     id: "visionary-final-year",
@@ -57,13 +57,13 @@ export const journeyStories: JourneyStory[] = [
     year: "2023-2024",
     format: "Final Year Project",
     summary:
-      "Pivoted from pure text-to-video ambition to practical image-driven story video generation with summaries, PDF input, multilingual audio, and voice customization.",
+      "I started with a too-ambitious text-to-video idea, then pivoted into something shippable: image-driven story videos with summaries, PDF input, and multilingual narration.",
     highlights: [
       "Built full architecture and shipped Gradio interface",
       "Expanded scope iteratively until submission deadline",
       "Explored add-on music pipeline as an extra milestone",
     ],
-    lesson: "Creative pivots turn impossible ideas into shippable products.",
+    lesson: "A good pivot can save a project without killing the vision.",
   },
   {
     id: "college-payment-integration",
@@ -71,13 +71,13 @@ export const journeyStories: JourneyStory[] = [
     year: "2024",
     format: "Department Project",
     summary:
-      "Handled payment gateway integration responsibility for event booking software. Studied practical compliance constraints and implemented secure flows with major providers.",
+      "I handled payment gateway integration for our inter-college event platform, including security and compliance checks before launch.",
     highlights: [
       "Integrated Paytm and Razorpay workflows",
       "Focused on transaction reliability and security",
       "Coordinated legal and compliance understanding",
     ],
-    lesson: "Real products require technical and regulatory thinking together.",
+    lesson: "Product work is technical, legal, and operational at the same time.",
   },
   {
     id: "trinity-captcha-project",
@@ -85,13 +85,13 @@ export const journeyStories: JourneyStory[] = [
     year: "2024",
     format: "Course Project | Team of 2",
     summary:
-      "Worked on noisy CAPTCHA prediction with heavy preprocessing and model comparisons. Balanced team disagreement by running parallel model experiments and converging on stronger CTC-based performance.",
+      "We tackled noisy CAPTCHA prediction and compared multiple model families. I pushed for experiment-driven decisions when our team disagreed on architecture.",
     highlights: [
       "Compared CNN, VGG, ViT, and CTC approaches",
       "Achieved best score in class",
       "Demonstrated evidence-based decision making",
     ],
-    lesson: "Results settle architecture debates better than opinions.",
+    lesson: "Data settles debates faster than opinions.",
   },
   {
     id: "astroleo-scalable-computing",
@@ -99,13 +99,13 @@ export const journeyStories: JourneyStory[] = [
     year: "2024-2025",
     format: "Capstone | Team of 2",
     summary:
-      "Built a secure satellite communication simulation with encryption and heartbeat failover despite being one of the smallest teams in the cohort.",
+      "My teammate and I built secure satellite communication simulation with failover logic, even though we were one of the smallest teams in class.",
     highlights: [
       "Simulated five satellites with resilient routing",
       "Resolved presentation scheduling issue directly with faculty",
       "Finished with top score despite team-size disadvantage",
     ],
-    lesson: "Clarity, persistence, and system thinking can outperform team size.",
+    lesson: "A small team can beat bigger teams with focus and execution.",
   },
   {
     id: "distributed-traffic-booking-story",
@@ -113,13 +113,13 @@ export const journeyStories: JourneyStory[] = [
     year: "2025",
     format: "Team Project | Team of 5",
     summary:
-      "Owned CockroachDB design and tuning for a distributed booking app with strict availability and fault tolerance goals.",
+      "I owned CockroachDB design and tuning for a distributed booking app where uptime and fault tolerance were non-negotiable.",
     highlights: [
       "Evaluated global distribution and automatic scaling behavior",
       "Ran iterative test cycles until architecture stabilized",
       "Turned repeated failures into a successful deployment path",
     ],
-    lesson: "Systems mastery is built through stubborn iteration.",
+    lesson: "Distributed systems click only after repeated failure and tuning cycles.",
   },
   {
     id: "pssqfl-dissertation-story",
@@ -127,13 +127,13 @@ export const journeyStories: JourneyStory[] = [
     year: "2025",
     format: "Dissertation Research",
     summary:
-      "Started late in topic allocation, then built a novel quantum federated learning direction after scanning 20+ papers and pushing beyond baseline designs.",
+      "I started late on topic allocation, read a large set of papers fast, and shaped a dissertation direction in secure personalized quantum federated learning.",
     highlights: [
       "Introduced secure and personalized slimmable QFL framing",
       "Diagnosed accuracy drops and redesigned personalization layer",
       "Produced strong final results with practical insight",
     ],
-    lesson: "Research impact starts where uncertainty is highest.",
+    lesson: "The best research direction usually starts where things feel unclear.",
   },
   {
     id: "kittykat-internship-story",
@@ -141,12 +141,12 @@ export const journeyStories: JourneyStory[] = [
     year: "2025",
     format: "Industry Internship | 3 months",
     summary:
-      "Contributed across collaboration tooling, chatbot memory fixes, and automation pipelines. Moved from prototype mindset to production shipping discipline.",
+      "During my internship, I worked on collaboration tooling, chatbot memory fixes, and automation pipelines that touched production data.",
     highlights: [
       "Ran in daily standups and Jira-driven execution",
       "Built n8n pipelines for product image extraction and generation",
       "Improved moodboard relevance using MongoDB-driven metadata filtering",
     ],
-    lesson: "Production engineering is about measurable reliability, not just demos.",
+    lesson: "Production engineering is measured by reliability, not demo quality.",
   },
 ];
