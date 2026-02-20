@@ -1,22 +1,27 @@
 import type { Metadata } from "next";
-import { Press_Start_2P } from "next/font/google";
+import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import ClientProviders from "@/components/layout/ClientProviders";
 
-const pressStart2P = Press_Start_2P({
-  weight: "400",
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-arcade",
+  variable: "--font-ui",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Nishanth Gopinath | Data Scientist & AI Engineer",
-  description: "A retro arcade-themed portfolio showcasing AI/ML projects, distributed systems, and data science work",
-  keywords: ["portfolio", "data science", "machine learning", "AI", "Nishanth Gopinath", "Trinity College Dublin"],
+  title: "Nishanth Gopinath | Portfolio Workspace",
+  description: "VS Code-inspired interactive portfolio featuring AI, ML, and distributed systems case studies.",
+  keywords: ["portfolio", "AI engineer", "machine learning", "data science", "Nishanth Gopinath", "Trinity College Dublin"],
   authors: [{ name: "Nishanth Gopinath" }],
   openGraph: {
-    title: "Nishanth Gopinath | Quest for AI Mastery",
-    description: "Insert coin to explore my AI/ML projects and data science work",
+    title: "Nishanth Gopinath | Portfolio Workspace",
+    description: "Explore projects and journey inside an interactive IDE-style portfolio.",
     type: "website",
   },
 };
@@ -28,10 +33,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${pressStart2P.variable} antialiased bg-[#0a0a0f] min-h-screen`} suppressHydrationWarning>
-        <ClientProviders>
-          {children}
-        </ClientProviders>
+      <body
+        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
+        suppressHydrationWarning
+      >
+        {children}
       </body>
     </html>
   );

@@ -1,4 +1,4 @@
-﻿# Vintage Arcade Portfolio
+# Vintage Arcade Portfolio
 
 Interactive portfolio website built with a retro arcade style.
 

@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import CRTScreen from '@/components/arcade/CRTScreen';
 import ArcadeButton from '@/components/arcade/ArcadeButton';
 import PixelAvatar from '@/components/ui/PixelAvatar';
 import StatBar from '@/components/ui/StatBar';

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 interface Particle {
@@ -14,29 +14,22 @@ interface Particle {
 }
 
 export default function ParticleBackground() {
-  const [particles, setParticles] = useState<Particle[]>([]);
-
-  useEffect(() => {
-    // Generate particles only on client to avoid hydration mismatch
+  const particles = useMemo<Particle[]>(() => {
     const colors = ['#00ffff', '#ff00ff', '#ffff00', '#00ff00', '#ff006622'];
-    const newParticles: Particle[] = [];
-
-    for (let i = 0; i < 30; i++) {
-      newParticles.push({
-        id: i,
-        x: (i * 37) % 100, // Deterministic positioning
-        y: (i * 53) % 100,
-        size: 2 + (i % 3),
-        color: colors[i % colors.length],
-        duration: 15 + (i % 10),
-        delay: i * 0.5
-      });
-    }
-
-    setParticles(newParticles);
+    return Array.from({ length: 30 }, (_, i) => ({
+      id: i,
+      x: (i * 37) % 100,
+      y: (i * 53) % 100,
+      size: 2 + (i % 3),
+      color: colors[i % colors.length],
+      duration: 15 + (i % 10),
+      delay: i * 0.5
+    }));
   }, []);
 
-  if (particles.length === 0) return null;
+  if (particles.length === 0) {
+    return null;
+  }
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">

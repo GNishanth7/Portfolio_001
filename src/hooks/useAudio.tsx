@@ -26,12 +26,6 @@ const soundUrls: Record<SoundType, string> = {
   achievement: '/sounds/achievement.mp3',
 };
 
-// Create a silent/minimal sound as fallback when audio files are missing
-const createFallbackSound = (): Howl | null => {
-  // Return null - we'll handle missing sounds gracefully
-  return null;
-};
-
 const sounds: Partial<Record<SoundType, Howl | null>> = {};
 
 export function AudioProvider({ children }: { children: ReactNode }) {

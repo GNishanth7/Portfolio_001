@@ -4,7 +4,6 @@ import { use } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import CRTScreen from '@/components/arcade/CRTScreen';
 import ArcadeButton from '@/components/arcade/ArcadeButton';
 import { projects } from '@/data/projects';
 import { useAudio } from '@/hooks/useAudio';

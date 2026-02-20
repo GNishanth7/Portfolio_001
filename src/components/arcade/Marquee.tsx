@@ -5,11 +5,10 @@ import { useEffect, useState } from 'react';
 
 interface MarqueeProps {
   texts: string[];
-  speed?: number;
   className?: string;
 }
 
-export default function Marquee({ texts, speed = 20, className = '' }: MarqueeProps) {
+export default function Marquee({ texts, className = '' }: MarqueeProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {

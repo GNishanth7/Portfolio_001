@@ -4,11 +4,32 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useKonamiCode } from '@/hooks/useKonamiCode';
 
+interface ConfettiPiece {
+  id: number;
+  color: string;
+  left: string;
+  drift: number;
+  rotate: number;
+  duration: number;
+  delay: number;
+}
+
+const confettiPalette = ['#00ffff', '#ff00ff', '#ffff00', '#00ff00', '#ff0066'];
+const confettiPieces: ConfettiPiece[] = Array.from({ length: 50 }, (_, i) => ({
+  id: i,
+  color: confettiPalette[i % confettiPalette.length],
+  left: `${(i * 17) % 100}%`,
+  drift: ((i % 11) - 5) * 18,
+  rotate: ((i * 73) % 720) + 45,
+  duration: 2 + (i % 4) * 0.45,
+  delay: (i % 6) * 0.08,
+}));
+
 export default function KonamiEasterEgg() {
   const [showEasterEgg, setShowEasterEgg] = useState(false);
   const [score, setScore] = useState(0);
 
-  const { isActivated, reset } = useKonamiCode(() => {
+  const { reset } = useKonamiCode(() => {
     setShowEasterEgg(true);
     setScore(prev => prev + 30);
   });
@@ -35,24 +56,24 @@ export default function KonamiEasterEgg() {
         >
           {/* Confetti/Pixel explosion */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {[...Array(50)].map((_, i) => (
+            {confettiPieces.map((piece) => (
               <motion.div
-                key={i}
+                key={piece.id}
                 className="absolute w-3 h-3"
                 style={{
-                  backgroundColor: ['#00ffff', '#ff00ff', '#ffff00', '#00ff00', '#ff0066'][i % 5],
-                  left: `${Math.random() * 100}%`,
+                  backgroundColor: piece.color,
+                  left: piece.left,
                   top: '-20px'
                 }}
                 animate={{
                   y: ['0vh', '120vh'],
-                  x: [0, (Math.random() - 0.5) * 200],
-                  rotate: [0, Math.random() * 720],
+                  x: [0, piece.drift],
+                  rotate: [0, piece.rotate],
                   opacity: [1, 0]
                 }}
                 transition={{
-                  duration: 2 + Math.random() * 2,
-                  delay: Math.random() * 0.5,
+                  duration: piece.duration,
+                  delay: piece.delay,
                   ease: 'easeIn'
                 }}
               />

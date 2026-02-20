@@ -1,0 +1,12 @@
+
+> temp-arcade@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://26.39.12.183:3000
+
+✓ Starting...
+✓ Ready in 1414ms
+ GET / 200 in 1060ms (compile: 853ms, render: 207ms)
+ GET / 200 in 466ms (compile: 25ms, render: 441ms)

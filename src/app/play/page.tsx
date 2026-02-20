@@ -29,8 +29,13 @@ export default function PlayPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [gameState, setGameState] = useState<'intro' | 'playing' | 'gameover'>('intro');
   const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
+  const [highScore, setHighScore] = useState(() => {
+    if (typeof window === 'undefined') return 0;
+    const saved = window.localStorage.getItem('pinball-highscore');
+    return saved ? parseInt(saved, 10) || 0 : 0;
+  });
   const [balls, setBalls] = useState(3);
+  const [isBallLaunched, setIsBallLaunched] = useState(false);
   const [leftPressed, setLeftPressed] = useState(false);
   const [rightPressed, setRightPressed] = useState(false);
   const [canvasSize, setCanvasSize] = useState({ width: 400, height: 600 });
@@ -88,12 +93,6 @@ export default function PlayPage() {
     ballRef.current.radius = 8 * s;
   }, [canvasSize]);
 
-  // Load high score
-  useEffect(() => {
-    const saved = localStorage.getItem('pinball-highscore');
-    if (saved) setHighScore(parseInt(saved));
-  }, []);
-
   // Prevent scrolling when touching game area
   useEffect(() => {
     const preventDefault = (e: TouchEvent) => {
@@ -105,6 +104,17 @@ export default function PlayPage() {
     document.addEventListener('touchmove', preventDefault, { passive: false });
     return () => document.removeEventListener('touchmove', preventDefault);
   }, [gameState]);
+
+  const launchBall = useCallback(() => {
+    if (!launched.current && gameState === 'playing') {
+      launched.current = true;
+      setIsBallLaunched(true);
+      const s = scaleRef.current;
+      ballRef.current.vy = -12 * s;
+      ballRef.current.vx = (Math.random() - 0.5) * 4 * s;
+      playSound('confirm');
+    }
+  }, [gameState, playSound]);
 
   // Keyboard controls
   useEffect(() => {
@@ -138,17 +148,7 @@ export default function PlayPage() {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
     };
-  }, [gameState]);
-
-  const launchBall = useCallback(() => {
-    if (!launched.current && gameState === 'playing') {
-      launched.current = true;
-      const s = scaleRef.current;
-      ballRef.current.vy = -12 * s;
-      ballRef.current.vx = (Math.random() - 0.5) * 4 * s;
-      playSound('confirm');
-    }
-  }, [gameState, playSound]);
+  }, [gameState, launchBall]);
 
   // Game loop
   useEffect(() => {
@@ -319,6 +319,7 @@ export default function PlayPage() {
         // Ball lost
         if (ball.y > height + 50 * s) {
           launched.current = false;
+          setIsBallLaunched(false);
           ball.x = width - 25 * s;
           ball.y = height - 90 * s;
           ball.vx = 0;
@@ -378,6 +379,7 @@ export default function PlayPage() {
     setScore(0);
     setBalls(3);
     launched.current = false;
+    setIsBallLaunched(false);
     const s = scaleRef.current;
     ballRef.current = { 
       x: canvasSize.width - 25 * s, 
@@ -554,12 +556,12 @@ export default function PlayPage() {
               }}
               className={`pointer-events-auto w-16 h-16 mb-8 rounded-full font-arcade text-xs 
                 transition-all active:scale-95
-                ${!launched.current 
+                ${!isBallLaunched 
                   ? 'bg-yellow-500 animate-pulse shadow-[0_0_20px_rgba(255,255,0,0.8)]' 
                   : 'bg-gray-600 opacity-50'
                 }`}
               style={{ touchAction: 'none' }}
-              disabled={launched.current}
+              disabled={isBallLaunched}
             >
               🚀
             </button>

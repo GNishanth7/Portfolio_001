@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useCallback, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type KeyHandler = () => void;
 
